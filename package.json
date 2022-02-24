@@ -1,0 +1,23 @@
+{
+  "name": "githubsmell",
+  "version": "1.0.0",
+  "description": "Static code analyzer using JavaScript",
+  "main": "MainSmell.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjamescox/GitHubSmell.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjamescox/GitHubSmell/issues"
+  },
+  "homepage": "https://github.com/tjamescox/GitHubSmell#readme",
+  "dependencies": {
+    "puppeteer": "^13.3.2"
+  }
+}
