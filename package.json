@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tjamescox/GitHubSmell#readme",
   "dependencies": {
+    "express": "^4.17.3",
     "puppeteer": "^13.3.2"
   }
 }
