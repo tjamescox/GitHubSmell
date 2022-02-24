@@ -28,7 +28,7 @@ server.listen(port, hostname, () => {
     const page = await browser.newPage();  
     await page.goto('https://github.com/Vipoup/Vulnerability-Scanner/blob/main/xss-attacks/server.js');  
     thing = await page.evaluate(() => {
-        return document.querySelector('#LC').textContent;
+        return document.querySelector('#LC1').textContent;
     });
 
     console.log(thing);
