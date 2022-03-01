@@ -53,15 +53,20 @@ server.get('/process_get', function (req, res) {
         }, maxSize, array1);
 
         //compare github lines to json data
-        // array1.forEach(lineToSearch => {
-        //     jsondata.forEach(comparison => {
-        //         if(new RegExp(comparison).test(lineToSearch)){
-        //             console.log("ayo");
-        //         }
-        //     });
-        // });
-        console.log(array1);
- 
+        let num = 1
+        Object.keys(jsondata).forEach(comparison => {
+            array1.forEach(lineToSearch => {
+                let regex = new RegExp(comparison, "igm");
+                if(regex.test(lineToSearch)){
+                    //console.log(jsondata.comparison);
+                    console.log(num);
+                    num = num + 1;
+                }
+
+            });
+        });
+        //console.log(array1);
+        console.log("here");
         await browser.close();}
     )();
 
