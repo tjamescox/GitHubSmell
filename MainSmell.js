@@ -45,7 +45,7 @@ server.get('/process_get', function (req, res) {
         //put all lines into an array
         array1 = await page.evaluate((maxSize, array1) => {
             for(let i = 0; i < maxSize; i++){
-                array1[i] = document.querySelector('#LC' + CSS.escape(i+1)).textContent;
+                array1.push(document.querySelector('#LC' + CSS.escape(i+1)).textContent);
                 //return document.querySelector('#LC${i}').textContent;
             }
             return array1;
@@ -53,17 +53,32 @@ server.get('/process_get', function (req, res) {
         }, maxSize, array1);
 
         //compare github lines to json data
-        let num = 1
-        Object.keys(jsondata).forEach(comparison => {
-            array1.forEach(lineToSearch => {
+        //let num = 1;
+        let counter = 1;
+        let codePlacement = [];
+        array1.forEach(lineToSearch => {
+            Object.keys(jsondata).forEach(comparison => {
                 let regex = new RegExp(comparison, "igm");
                 if(regex.test(lineToSearch)){
-                    //console.log(jsondata.comparison);
-                    console.log(num);
-                    num = num + 1;
+                    codePlacement.push(counter);
+                    //console.log(num);
+                    //num = num + 1;
                 }
-
+                // counter = counter + 1;
             });
+
+            // if(codePlacement.length != 0){
+            //     //location/lines of errors
+            //     console.log(codePlacement);
+            //     console.log(codePlacement.length);
+
+            //     //display the values of the json key
+
+            // }
+            counter = counter + 1;
+            //counter = 0;
+            //codePlacement = [];
+            console.log(codePlacement);
         });
         //console.log(array1);
         console.log("here");
