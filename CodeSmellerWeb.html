@@ -18,6 +18,8 @@
                 <input type="button" value="Enter" id="btn" onclick="MainSmell()">
             </div> 
             <textarea id = "Output" cols="30" rows="20"></textarea>-->
+
+            <!--
             <label for="basic-url">GitHub Link:</label>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -27,12 +29,16 @@
                 <button type="button" class="btn btn-success" onclick="MainSmell()">Enter</button>
             </div>
             <div class="input-group">
-                <!-- <div class="input-group-prepend">
+                <\!-- <div class="input-group-prepend">
                   <span class="input-group-text"></span>
-                </div> -->
+                </div> -\->
                 <textarea class="form-control" id="Output" aria-label="With textarea"></textarea>
-            </div>
-        
+            </div> -->
+
+            <form action = "http://localhost:3000/process_get" method = "GET">
+                Github Link: <input type = "text" name = "GHLink">  <br>
+                <input type = "submit" value = "Submit">
+            </form>
         
     </div>
 
