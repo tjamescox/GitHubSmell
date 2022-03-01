@@ -1,0 +1,14 @@
+{
+    "const" : "it works",
+    "patternProperties": {
+        "const": {
+            "type": "string",
+            "pattern": "/const/igm"
+        }
+    }
+
+
+
+
+
+}
