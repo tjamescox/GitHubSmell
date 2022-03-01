@@ -12,6 +12,7 @@ function MainSmell(){
 const express = require('express');
 const path = require('path');
 const puppeteer = require('puppeteer');
+const jsondata = require('./BadPractices.json');
 
 //Starting server with express
 const server = express();
@@ -29,20 +30,38 @@ server.get('/process_get', function (req, res) {
        GHLink:req.query.GHLink
     };
 
-    //console.log(response.GHLink)
-
     (async () => {  const browser = await puppeteer.launch();  
         const page = await browser.newPage();  
 
         //https://github.com/Vipoup/Vulnerability-Scanner/blob/main/xss-attacks/server.js
-        await page.goto(response.GHLink);  
-        thing = await page.evaluate(() => {
-
-            return document.querySelector('#LC1').textContent;
+        await page.goto(response.GHLink);
+        const maxSize = await page.evaluate(() => {
+            //document.querySelectorAll('tr').length
+            //document.querySelectorAll('td[id^=LC]').length
+            return document.querySelectorAll('td[id^=LC]').length
         });
-    
-        console.log(thing);
-        //await page.screenshot({ path: 'mainPage.png' });
+
+        let array1 = [];
+        //put all lines into an array
+        array1 = await page.evaluate((maxSize, array1) => {
+            for(let i = 0; i < maxSize; i++){
+                array1[i] = document.querySelector('#LC' + CSS.escape(i+1)).textContent;
+                //return document.querySelector('#LC${i}').textContent;
+            }
+            return array1;
+            //return document.querySelector('#LC1').textContent;
+        }, maxSize, array1);
+
+        //compare github lines to json data
+        // array1.forEach(lineToSearch => {
+        //     jsondata.forEach(comparison => {
+        //         if(new RegExp(comparison).test(lineToSearch)){
+        //             console.log("ayo");
+        //         }
+        //     });
+        // });
+        console.log(array1);
+ 
         await browser.close();}
     )();
 
@@ -51,6 +70,8 @@ server.get('/process_get', function (req, res) {
 
 server.listen(port);
 console.log('Server started at http://localhost:' + port);
+
+
 
 
 // const http = require('http');
