@@ -1,14 +1,14 @@
 {
-    "const" : "it works",
-    "patternProperties": {
-        "const": {
-            "type": "string",
-            "pattern": "/const/igm"
-        }
+    "const" : {
+        "possibleIssue" : "issue holder",
+        "issueLinkInfo" : "link holder",
+        "issueLinkFix" : "link2 holder"
+    },
+
+    "await" : {
+        "possibleIssue" : "issue test",
+        "issueLinkInfo" : "link test",
+        "issueLinkFix" : "link2 test"
     }
-
-
-
-
 
 }
