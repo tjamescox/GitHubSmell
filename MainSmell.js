@@ -54,33 +54,52 @@ server.get('/process_get', function (req, res) {
 
         //compare github lines to json data
         //let num = 1;
-        let counter = 1;
+        let counter = 0;
         let codePlacement = [];
-        array1.forEach(lineToSearch => {
-            Object.keys(jsondata).forEach(comparison => {
+        Object.keys(jsondata).forEach(comparison => {
+            array1.forEach(lineToSearch => {
+                //if this regex is above this loop, the code counts wrong for some reason
                 let regex = new RegExp(comparison, "igm");
+                counter++;
                 if(regex.test(lineToSearch)){
                     codePlacement.push(counter);
                     //console.log(num);
                     //num = num + 1;
                 }
-                // counter = counter + 1;
             });
 
-            // if(codePlacement.length != 0){
-            //     //location/lines of errors
-            //     console.log(codePlacement);
-            //     console.log(codePlacement.length);
+            if(codePlacement.length != 0){
+                //location/lines of errors
+                console.log(codePlacement);
 
-            //     //display the values of the json key
+                /*this is testing for accuracy using ctrl+f on the 
+                github page and typing matching the expression*/
+                //console.log(codePlacement.length);
 
-            // }
-            counter = counter + 1;
-            //counter = 0;
-            //codePlacement = [];
-            console.log(codePlacement);
+                //display the values of the json key
+                //WIP get json value from key using variable name
+                //console.log(jsondata.comparison.possibleIssue);
+            }
+
+            counter = 0;
+            codePlacement = [];
         });
-        //console.log(array1);
+
+        /*array => json foreach loop version, puts all found 
+        errors in 1 array, if above foreach loops commented out*/
+        // array1.forEach(lineToSearch => {
+        //     counter++;
+        //     Object.keys(jsondata).forEach(comparison => {
+        //         let regex = new RegExp(comparison, "igm");
+        //         if(regex.test(lineToSearch)){
+        //             codePlacement.push(counter);
+        //         }
+        //     });
+        // });
+        // console.log(codePlacement);
+        // console.log(codePlacement.length);
+
+        //know where the code is, for debugging purposes
         console.log("here");
         await browser.close();}
     )();
