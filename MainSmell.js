@@ -77,8 +77,7 @@ server.get('/process_get', function (req, res) {
                 //console.log(codePlacement.length);
 
                 //display the values of the json key
-                //WIP get json value from key using variable name
-                //console.log(jsondata.comparison.possibleIssue);
+                console.log(jsondata[comparison]["possibleIssue"]);
             }
 
             counter = 0;
