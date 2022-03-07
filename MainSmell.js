@@ -23,12 +23,14 @@ server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/CodeSmellerWeb.html'));
 });
 
-
+let array = []
 server.get('/process_get', function (req, res) {
     // Prepare output in JSON format
     let response = {
        GHLink:req.query.GHLink
     };
+
+    //res.setHeader('Content-Type', 'text/html');
 
     (async () => {  const browser = await puppeteer.launch();  
         const page = await browser.newPage();  
@@ -59,7 +61,7 @@ server.get('/process_get', function (req, res) {
         Object.keys(jsondata).forEach(comparison => {
             array1.forEach(lineToSearch => {
                 //if this regex is above this loop, the code counts wrong for some reason
-                let regex = new RegExp(comparison, "igm");
+                let regex = new RegExp(String(comparison), "igm");
                 counter++;
                 if(regex.test(lineToSearch)){
                     codePlacement.push(counter);
@@ -70,14 +72,18 @@ server.get('/process_get', function (req, res) {
 
             if(codePlacement.length != 0){
                 //location/lines of errors
-                console.log(codePlacement);
+                //console.log(codePlacement);
+                array.push(codePlacement);
 
                 /*this is testing for accuracy using ctrl+f on the 
                 github page and typing matching the expression*/
                 //console.log(codePlacement.length);
 
                 //display the values of the json key
-                console.log(jsondata[comparison]["possibleIssue"]);
+                //console.log(jsondata[comparison]["possibleIssue"]);
+                array.push(jsondata[comparison]["possibleIssue"]);
+                array.push(jsondata[comparison]["issueLinkInfo"]);
+                array.push(jsondata[comparison]["issueLinkFix"]);
             }
 
             counter = 0;
@@ -102,9 +108,21 @@ server.get('/process_get', function (req, res) {
         console.log("here");
         await browser.close();}
     )();
+    
+    for(output in array){
+        res.write(String(array[output]));
+        res.write("\n");
+    }
 
+    //res.write(String(array));
+    //res.write("hello");
     res.end();
  })
+
+server.post('/process_get', function (req, res) {
+    res.send("hello world");
+});
+
 
 server.listen(port);
 console.log('Server started at http://localhost:' + port);
