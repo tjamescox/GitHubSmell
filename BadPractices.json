@@ -1,0 +1,26 @@
+{
+    "Array\\(" : {
+        "possibleIssue" : "Do not use the variadic Array constructor. The constructor is error-prone if arguments are added or removed. Use a literal instead.",
+        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.2.2",
+        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.2.2 \n"
+    },
+
+    "Object\\(" : {
+        "possibleIssue" : "Do not use the Object constructor. This is disallowed for consistency. Use an object literal instead.",
+        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.3.2",
+        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.3.2 \n"
+    },
+
+    "with" : {
+        "possibleIssue" : "Do not use the with keyword. It makes your code harder to understand and has been banned in strict mode since ES5.",
+        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.11.1",
+        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.11.1 \n"
+    },
+
+    "@author" : {
+        "possibleIssue" : "Author credit is not required in source file.",
+        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 9.2",
+        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 9.2 \n"
+    }
+
+}
