@@ -1,14 +1,3 @@
-function MainSmell(){
-    // let input = document.querySelector('input');
-    // let textarea = document.querySelector('textarea');
-    document.getElementById("btn").addEventListener("click", ()=>{
-        document.getElementById("Output").value = "Loading..."});
-    
-    let input = document.getElementById("Input").value;
-    document.getElementById("btn").addEventListener("click", ()=>{
-        document.getElementById("Output").value = document.getElementById("Output").value + '\n' + input});
-}
-
 const express = require('express');
 const path = require('path');
 const puppeteer = require('puppeteer');
@@ -35,7 +24,7 @@ server.get('/process_get', function (req, res) {
     (async () => {  const browser = await puppeteer.launch();  
         const page = await browser.newPage();  
 
-        //https://github.com/Vipoup/Vulnerability-Scanner/blob/main/xss-attacks/server.js
+        //https://github.com/Vipoup/files-to-scan/blob/main/CodeWithBadPractices.js
         await page.goto(response.GHLink);
         const maxSize = await page.evaluate(() => {
             //document.querySelectorAll('tr').length
@@ -48,14 +37,11 @@ server.get('/process_get', function (req, res) {
         array1 = await page.evaluate((maxSize, array1) => {
             for(let i = 0; i < maxSize; i++){
                 array1.push(document.querySelector('#LC' + CSS.escape(i+1)).textContent);
-                //return document.querySelector('#LC${i}').textContent;
             }
             return array1;
-            //return document.querySelector('#LC1').textContent;
         }, maxSize, array1);
 
         //compare github lines to json data
-        //let num = 1;
         let counter = 0;
         let codePlacement = [];
         Object.keys(jsondata).forEach(comparison => {
@@ -65,14 +51,11 @@ server.get('/process_get', function (req, res) {
                 counter++;
                 if(regex.test(lineToSearch)){
                     codePlacement.push(counter);
-                    //console.log(num);
-                    //num = num + 1;
                 }
             });
 
             if(codePlacement.length != 0){
                 //location/lines of errors
-                //console.log(codePlacement);
                 array.push(codePlacement);
 
                 /*this is testing for accuracy using ctrl+f on the 
@@ -80,7 +63,6 @@ server.get('/process_get', function (req, res) {
                 //console.log(codePlacement.length);
 
                 //display the values of the json key
-                //console.log(jsondata[comparison]["possibleIssue"]);
                 array.push(jsondata[comparison]["possibleIssue"]);
                 array.push(jsondata[comparison]["issueLinkInfo"]);
                 array.push(jsondata[comparison]["issueLinkFix"]);
@@ -89,20 +71,6 @@ server.get('/process_get', function (req, res) {
             counter = 0;
             codePlacement = [];
         });
-
-        /*array => json foreach loop version, puts all found 
-        errors in 1 array, if above foreach loops commented out*/
-        // array1.forEach(lineToSearch => {
-        //     counter++;
-        //     Object.keys(jsondata).forEach(comparison => {
-        //         let regex = new RegExp(comparison, "igm");
-        //         if(regex.test(lineToSearch)){
-        //             codePlacement.push(counter);
-        //         }
-        //     });
-        // });
-        // console.log(codePlacement);
-        // console.log(codePlacement.length);
 
         //know where the code is, for debugging purposes
         console.log("here");
@@ -114,43 +82,9 @@ server.get('/process_get', function (req, res) {
         res.write("\n");
     }
 
-    //res.write(String(array));
-    //res.write("hello");
     res.end();
  })
-
-server.post('/process_get', function (req, res) {
-    res.send("hello world");
-});
 
 
 server.listen(port);
 console.log('Server started at http://localhost:' + port);
-
-
-
-
-// const http = require('http');
-// const { Console } = require('console');
-// const hostname = '127.0.0.1';
-// const port = 3000;  
-// const server = http.createServer((req, res) => {
-//     res.statusCode = 200;
-//     res.setHeader('Content-Type', 'text/plain');
-//     res.write("CodeSmellerWeb.html");
-//     res.end('');});
-// server.listen(port, hostname, () => {
-//     console.log(`Server running at http://${hostname}:${port}/`);}
-// );
-
-// (async () => {  const browser = await puppeteer.launch();  
-//     const page = await browser.newPage();  
-//     await page.goto('https://github.com/Vipoup/Vulnerability-Scanner/blob/main/xss-attacks/server.js');  
-//     thing = await page.evaluate(() => {
-//         return document.querySelector('#LC1').textContent;
-//     });
-
-//     console.log(thing);
-//     //await page.screenshot({ path: 'mainPage.png' });
-//     await browser.close();}
-// )();
