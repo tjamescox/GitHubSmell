@@ -21,6 +21,13 @@
         "possibleIssue" : "Author credit is not required in source file.",
         "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 9.2",
         "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 9.2 \n"
+    },
+
+    ".{80,}": {
+        "possibleIssue" : "Try to not exceed 80 characters (columns) on a single line for readability. Wrap the line to the next if possible.",
+        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 4.4",
+        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 4.4 \n"
     }
 
+    
 }
