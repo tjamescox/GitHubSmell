@@ -29,7 +29,8 @@
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html Section 4.4, https://google.github.io/styleguide/jsguide.html#formatting-line-wrapping \n"
     },
 
-    "eval(" : {
+
+    "eval\\(" : {
         "possibleIssue" : "Do not use eval(). String input is vulnerable to code that manipulates databases.",
         "issueLinkInfo" : "Link for more information: https://sebhastian.com/javascript-eval/, https://stackoverflow.com/questions/86513/why-is-using-the-javascript-eval-function-a-bad-idea",
         "issueLinkFix" : "Link for potential fix: https://stackoverflow.com/questions/2029888/what-are-the-alternatives-to-eval-in-javascript \n"
@@ -47,7 +48,7 @@
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-one-statement-perline Section 4.3.1 \n"
     },
 
-    "^[^/*\\n fwi]+.*[^;({},+=\\[\\]>\\n\\t*\\\\]$" : {
+    "^[^/*\\n fwi]+.*[^;({},+=\\[>\\n\\t*\\\\]$" : {
         "possibleIssue" : "Every statement must be terminated with a semicolon. Relying on automatic semicolon insertion is forbidden. (May catch extra spaces after semi-colons)",
         "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required \n"
