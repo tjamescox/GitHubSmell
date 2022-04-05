@@ -48,7 +48,7 @@
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-one-statement-perline Section 4.3.1 \n"
     },
 
-    "^[^/*\\n fwi]+.*[^;({},+=\\[>\\n\\t*\\\\]$" : {
+    "^[^/*\\n fw]+.*[^;({},+=\\[>\\n\\t*\\\\]$" : {
         "possibleIssue" : "Every statement must be terminated with a semicolon. Relying on automatic semicolon insertion is forbidden. (May catch extra spaces after semi-colons)",
         "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required \n"
