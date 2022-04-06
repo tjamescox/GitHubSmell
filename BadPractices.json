@@ -54,6 +54,30 @@
         "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required \n"
     },
 
+    "throw StopIteration" : {
+        "possibleIssue" : "StopIteration is depreciated",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: http://www-lia.deis.unibo.it/materiale/JS/developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/StopIteration.html \n"
+    },
+
+    "Iterator\\(" : {
+        "possibleIssue" : "Iterator is depreciated",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://www.geeksforgeeks.org/iterator-vs-foreach-in-java/ \n"
+    },
+
+    "watch\\(" : {
+        "possibleIssue" : "watch is depreciated, use proxy instead",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy \n"
+    },
+
+    "unwatch\\(" : {
+        "possibleIssue" : "unwatch is depreciated, use proxy instead",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy \n"
+    },
+
     "newBadPracticeTemplate" : {
         "possibleIssue" : "",
         "issueLinkInfo" : "Link for more information: ",
