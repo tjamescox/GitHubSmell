@@ -12,7 +12,7 @@ server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/CodeSmellerWeb.html'));
 });
 server.get('/test', (req, res) => {
-    res.sendFile(path.join(__dirname, '/indextest.html'));
+    res.sendFile(path.join(__dirname, '/testusejson.html'));
 });
 
 let array = []

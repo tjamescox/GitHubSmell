@@ -1,26 +1,86 @@
 {
     "Array\\(" : {
         "possibleIssue" : "Do not use the variadic Array constructor. The constructor is error-prone if arguments are added or removed. Use a literal instead.",
-        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.2.2",
-        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.2.2 \n"
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#features-arrays-ctor Section 5.2.2",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#features-arrays-ctor Section 5.2.2 \n"
     },
 
     "Object\\(" : {
         "possibleIssue" : "Do not use the Object constructor. This is disallowed for consistency. Use an object literal instead.",
-        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.3.2",
-        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.3.2 \n"
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#features-objects-ctor Section 5.3.2",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#features-objects-ctor Section 5.3.2 \n"
     },
 
     "with" : {
         "possibleIssue" : "Do not use the with keyword. It makes your code harder to understand and has been banned in strict mode since ES5.",
-        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 5.11.1",
-        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 5.11.1 \n"
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#disallowed-features-with Section 5.11.1, https://2ality.com/2011/06/with-statement.html",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#disallowed-features-with Section 5.11.1 \n"
     },
 
     "@author" : {
         "possibleIssue" : "Author credit is not required in source file.",
-        "issueLinkInfo" : "https://google.github.io/styleguide/jsguide.html Section 9.2",
-        "issueLinkFix" : "https://google.github.io/styleguide/jsguide.html Section 9.2 \n"
-    }
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#appendices-commonly-misunderstood-style-rules Section 9.2",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#appendices-commonly-misunderstood-style-rules Section 9.2 \n"
+    },
 
+    ".{80,}": {
+        "possibleIssue" : "Try to not exceed 80 characters (columns) on a single line for readability. Wrap the line to the next if possible unless the line is an import statement.",
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#formatting-column-limit Section 4.4, https://google.github.io/styleguide/jsguide.html#es-module-imports 3.4.1",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html Section 4.4, https://google.github.io/styleguide/jsguide.html#formatting-line-wrapping \n"
+    },
+
+
+    "eval\\(" : {
+        "possibleIssue" : "Do not use eval(). String input is vulnerable to code that manipulates databases.",
+        "issueLinkInfo" : "Link for more information: https://sebhastian.com/javascript-eval/, https://stackoverflow.com/questions/86513/why-is-using-the-javascript-eval-function-a-bad-idea",
+        "issueLinkFix" : "Link for potential fix: https://stackoverflow.com/questions/2029888/what-are-the-alternatives-to-eval-in-javascript \n"
+    },
+
+    "^export default" : {
+        "possibleIssue" : "Do not use default exports. Importing modules must give a name to these values, which can lead to inconsistencies in naming across modules.",
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#es-module-exports Section 3.4.2.1",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#es-module-exports Section 3.4.2.1 \n"
+    },
+
+    "^[^f/]+.*;.*;" : {
+        "possibleIssue" : "Two semicolons on one line detected. Each statement is followed by a line-break.",
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#formatting-one-statement-perline Section 4.3.1",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-one-statement-perline Section 4.3.1 \n"
+    },
+
+    "^[^/*\\n fw]+.*[^;({},+=\\[>\\n\\t*\\\\]$" : {
+        "possibleIssue" : "Every statement must be terminated with a semicolon. Relying on automatic semicolon insertion is forbidden. (May catch extra spaces after semi-colons)",
+        "issueLinkInfo" : "Link for more information: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required",
+        "issueLinkFix" : "Link for potential fix: https://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required \n"
+    },
+
+    "throw StopIteration" : {
+        "possibleIssue" : "StopIteration is depreciated",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: http://www-lia.deis.unibo.it/materiale/JS/developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/StopIteration.html \n"
+    },
+
+    "Iterator\\(" : {
+        "possibleIssue" : "Iterator is depreciated",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://www.geeksforgeeks.org/iterator-vs-foreach-in-java/ \n"
+    },
+
+    "watch\\(" : {
+        "possibleIssue" : "watch is depreciated, use proxy instead",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy \n"
+    },
+
+    "unwatch\\(" : {
+        "possibleIssue" : "unwatch is depreciated, use proxy instead",
+        "issueLinkInfo" : "Link for more information: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features",
+        "issueLinkFix" : "Link for potential fix: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy \n"
+    },
+
+    "newBadPracticeTemplate" : {
+        "possibleIssue" : "",
+        "issueLinkInfo" : "Link for more information: ",
+        "issueLinkFix" : "Link for potential fix: \n"
+    }
 }
