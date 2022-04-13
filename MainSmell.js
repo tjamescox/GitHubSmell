@@ -84,7 +84,8 @@ server.get('/process_get', function (req, res) {
         res.write(String(array[output]));
         res.write("\n");
     }
-
+    
+    console.log("here");
     res.end();
  })
 
