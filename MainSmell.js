@@ -11,6 +11,9 @@ const port = process.env.PORT || 3000;
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/CodeSmellerWeb.html'));
 });
+server.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, '/indextest.html'));
+});
 
 let array = []
 server.get('/process_get', function (req, res) {
@@ -73,7 +76,7 @@ server.get('/process_get', function (req, res) {
         });
 
         //know where the code is, for debugging purposes
-        console.log("here");
+        //console.log("here");
         await browser.close();}
     )();
     
