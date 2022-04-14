@@ -22,7 +22,7 @@ server.get('/process_get', function (req, res) {
        GHLink:req.query.GHLink
     };
 
-    //res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Type', 'text/html');
 
     (async () => {  const browser = await puppeteer.launch();  
         const page = await browser.newPage();  
@@ -80,10 +80,14 @@ server.get('/process_get', function (req, res) {
         await browser.close();}
     )();
     
+    res.write("<textarea rows=\"20\" cols=\"110\">");
+
     for(output in array){
         res.write(String(array[output]));
         res.write("\n");
     }
+
+    res.write("</textarea>");
     
     console.log("here");
     res.end();
