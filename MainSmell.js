@@ -1,4 +1,5 @@
 const express = require('express');
+const { waitForDebugger } = require('inspector');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const jsondata = require('./BadPractices.json');
@@ -11,18 +12,19 @@ const port = process.env.PORT || 3000;
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/CodeSmellerWeb.html'));
 });
-server.get('/test', (req, res) => {
-    res.sendFile(path.join(__dirname, '/testusejson.html'));
-});
+// server.get('/test', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/testrender.html'));
+// });
 
-let array = []
+server.set('view engine', 'pug')
+
+
+let arrayData = [];
 server.get('/process_get', function (req, res) {
     // Prepare output in JSON format
     let response = {
        GHLink:req.query.GHLink
     };
-
-    res.setHeader('Content-Type', 'text/html');
 
     (async () => {  const browser = await puppeteer.launch();  
         const page = await browser.newPage();  
@@ -59,40 +61,51 @@ server.get('/process_get', function (req, res) {
 
             if(codePlacement.length != 0){
                 //location/lines of errors
-                array.push(codePlacement);
+                arrayData.push(codePlacement);
 
                 /*this is testing for accuracy using ctrl+f on the 
                 github page and typing matching the expression*/
                 //console.log(codePlacement.length);
 
                 //display the values of the json key
-                array.push(jsondata[comparison]["possibleIssue"]);
-                array.push(jsondata[comparison]["issueLinkInfo"]);
-                array.push(jsondata[comparison]["issueLinkFix"]);
+                arrayData.push(jsondata[comparison]["possibleIssue"]);
+                arrayData.push(jsondata[comparison]["issueLinkInfo"]);
+                arrayData.push(jsondata[comparison]["issueLinkFix"]);
             }
 
             counter = 0;
             codePlacement = [];
-        });
-
+        })
         //know where the code is, for debugging purposes
         //console.log("here");
         await browser.close();}
     )();
     
-    res.write("<textarea rows=\"20\" cols=\"110\">");
-
-    for(output in array){
-        res.write(String(array[output]));
-        res.write("\n");
-    }
-
-    res.write("</textarea>");
+    //301 being the status for permanent redirection
+    //res.redirect(301, '/test');
+   //res.writeHead('Content-Type', 'text/html');
     
-    console.log("here");
+    // res.write("<textarea rows=\"20\" cols=\"110\">");    
+    // for(output in arrayData){ 
+    //     res.write(String(arrayData[output]));
+    //     res.write("\n");
+    // }
+    // res.write("</textarea>");
+     console.log("here");
+     res.redirect(301, '/test');
     res.end();
- })
+ });
 
+
+ let test = arrayData;
+ //console.log(test);
+ server.get('/test',function(req,res){
+    res.render('render', {
+        title: 'Code Analysis Tool', 
+        message: 'Test Variable From JS File',
+        data: test
+    });
+ });
 
 server.listen(port);
 console.log('Server started at http://localhost:' + port);
